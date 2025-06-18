@@ -1,1 +1,924 @@
-sddd
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stair Toilet Seat for Children - Solusi Toilet Aman untuk Anak</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .price-tag {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .price-tag::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #3b82f6 transparent transparent;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ef4444;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #bbb;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            width: 300px;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .notification-close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://cdn.shopify.com/s/files/1/0908/1317/0034/files/550x550.jpg?v=1745427468" alt="Logo" class="h-12 w-12 rounded-full object-cover">
+                <h1 class="ml-3 text-xl font-bold text-blue-600">StairToilet<span class="text-orange-500">Kids</span></h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#features" class="text-gray-700 hover:text-blue-600 font-medium">Fitur</a>
+                <a href="#gallery" class="text-gray-700 hover:text-blue-600 font-medium">Galeri</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 font-medium">Testimoni</a>
+                <a href="#faq" class="text-gray-700 hover:text-blue-600 font-medium">FAQ</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-md">
+            <a href="#features" class="block py-2 text-gray-700 hover:text-blue-600">Fitur</a>
+            <a href="#gallery" class="block py-2 text-gray-700 hover:text-blue-600">Galeri</a>
+            <a href="#testimonials" class="block py-2 text-gray-700 hover:text-blue-600">Testimoni</a>
+            <a href="#faq" class="block py-2 text-gray-700 hover:text-blue-600">FAQ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-12 md:py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">Stair Toilet Seat <span class="text-blue-600">for Children</span></h1>
+                <p class="text-lg text-gray-600 mb-6">Solusi Aman dan Nyaman untuk Toilet Training Si Kecil!</p>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 text-green-800 p-2 rounded-full mr-3">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="font-medium">Membantu anak belajar toilet dengan mandiri</p>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 text-green-800 p-2 rounded-full mr-3">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="font-medium">Desain ergonomis yang aman dan stabil</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-green-100 text-green-800 p-2 rounded-full mr-3">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="font-medium">Material berkualitas tinggi dan mudah dibersihkan</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center mb-6">
+                    <div class="price-tag mr-4">
+                        <span class="text-sm line-through opacity-70">Rp 388.500</span>
+                        <span class="text-2xl font-bold">Rp 259.000</span>
+                    </div>
+                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Hemat 50%</span>
+                </div>
+                
+                <a href="#order" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 inline-flex items-center pulse">
+                    <i class="fas fa-shopping-cart mr-2"></i> BELI SEKARANG
+                </a>
+                
+                <div class="mt-6 flex items-center text-sm text-gray-600">
+                    <div class="flex -space-x-2 mr-3">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/45.jpg" alt="">
+                    </div>
+                    <span><span class="font-bold" id="viewer-count">1,257</span> Orang Telah Membeli Produk Ini</span>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative">
+                <img src="https://sd3kw0-vr.myshopify.com/cdn/shop/files/71iUgjk8qML.jpg?v=1745428187&width=713" alt="Stair Toilet Seat for Children" class="rounded-lg shadow-xl floating w-full max-w-md mx-auto">
+                <div class="absolute -bottom-5 -left-5 bg-white p-3 rounded-lg shadow-md hidden md:block">
+                    <div class="flex items-center">
+                        <div class="bg-yellow-100 text-yellow-800 p-2 rounded-full mr-2">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold">4.9/5</p>
+                            <p class="text-xs text-gray-600">Rating Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Solution Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Masalah yang Sering Dihadapi Orang Tua</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Anak-anak sering kesulitan saat belajar menggunakan toilet dewasa</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-red-100 text-red-800 p-3 rounded-full mr-4">
+                            <i class="fas fa-exclamation-triangle text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Masalah</h3>
+                            <p class="text-gray-600">Anak sering takut atau tidak nyaman menggunakan toilet dewasa karena terlalu tinggi dan besar, sehingga membuat proses toilet training menjadi sulit dan memakan waktu lama.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-green-100 text-green-800 p-3 rounded-full mr-4">
+                            <i class="fas fa-lightbulb text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Solusi</h3>
+                            <p class="text-gray-600">Stair Toilet Seat for Children hadir dengan desain khusus yang membuat anak merasa nyaman dan aman saat menggunakan toilet. Dengan tangga yang kokoh dan dudukan yang pas, anak bisa belajar toilet dengan mandiri tanpa rasa takut.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Fitur Unggulan Produk Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Dirancang khusus untuk kenyamanan dan keamanan si kecil</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card bg-blue-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-blue-100 text-blue-800 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Material Aman</h3>
+                    <p class="text-gray-600">Terbuat dari bahan PP berkualitas tinggi yang bebas BPA, aman untuk anak-anak dan mudah dibersihkan.</p>
+                </div>
+                
+                <div class="feature-card bg-orange-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-orange-100 text-orange-800 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-child text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Desain Ergonomis</h3>
+                    <p class="text-gray-600">Tangga yang kokoh dan dudukan yang pas membuat anak nyaman dan aman saat menggunakan toilet.</p>
+                </div>
+                
+                <div class="feature-card bg-green-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-green-100 text-green-800 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-arrows-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Multi Fungsi</h3>
+                    <p class="text-gray-600">Bisa digunakan sebagai tangga toilet, dudukan toilet anak, atau kursi mandi. Praktis dan hemat space.</p>
+                </div>
+                
+                <div class="feature-card bg-purple-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-purple-100 text-purple-800 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-weight text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Kapasitas Maksimal</h3>
+                    <p class="text-gray-600">Dapat menahan beban hingga 50kg, cocok untuk anak usia 1-10 tahun dengan berat badan berbeda.</p>
+                </div>
+                
+                <div class="feature-card bg-yellow-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-yellow-100 text-yellow-800 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Pemasangan Mudah</h3>
+                    <p class="text-gray-600">Tidak perlu alat khusus, bisa langsung digunakan di berbagai jenis toilet standar.</p>
+                </div>
+                
+                <div class="feature-card bg-red-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-red-100 text-red-800 p-4 rounded-full inline-block mb-4">
+                        <i class="fas fa-tint text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Anti Slip</h3>
+                    <p class="text-gray-600">Permukaan tangga dan dudukan memiliki tekstur anti slip untuk mencegah anak terpeleset saat digunakan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section id="gallery" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Galeri Produk</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Lihat lebih detail produk Stair Toilet Seat for Children</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://cdn.shopify.com/s/files/1/0908/1317/0034/files/550x543.jpg?v=1745427467" alt="Product Image 1" class="w-full h-full object-cover cursor-pointer" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://cdn.shopify.com/s/files/1/0908/1317/0034/files/550x550_2.jpg?v=1745427468" alt="Product Image 2" class="w-full h-full object-cover cursor-pointer" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://sd3kw0-vr.myshopify.com/cdn/shop/files/550x550_3.jpg?v=1745428187&width=713" alt="Product Image 3" class="w-full h-full object-cover cursor-pointer" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://sd3kw0-vr.myshopify.com/cdn/shop/files/BLP41_1000x_a38ecf6c-ea4b-4b86-a425-0337129dab03.webp?v=1745428187&width=713" alt="Product Image 4" class="w-full h-full object-cover cursor-pointer" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://sd3kw0-vr.myshopify.com/cdn/shop/files/lospitch-siege-de-toilette-pliable-reducteur-de-to_1_e05fadac-9689-47f8-9259-256cdfbb339f.webp?v=1745428187&width=713" alt="Product Image 5" class="w-full h-full object-cover cursor-pointer" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <img src="https://cdn.shopify.com/s/files/1/0908/1317/0034/files/71e-YnAw04L._AC_SL1500.jpg?v=1745455812" alt="Product Image 6" class="w-full h-full object-cover cursor-pointer" onclick="openModal(this)">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal for Gallery -->
+        <div id="gallery-modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modal-img">
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Cara Menggunakan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Sangat mudah digunakan oleh anak-anak</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 text-blue-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Pasang di Toilet</h3>
+                    <p class="text-gray-600">Letakkan tangga toilet di depan toilet dewasa dengan posisi yang stabil.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-blue-100 text-blue-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Anak Naik Tangga</h3>
+                    <p class="text-gray-600">Biarkan anak naik tangga dengan perlahan dan duduk di dudukan yang nyaman.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-blue-100 text-blue-800 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Gunakan Toilet</h3>
+                    <p class="text-gray-600">Anak bisa menggunakan toilet dengan nyaman dan aman seperti orang dewasa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa Kata Mereka?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Testimoni nyata dari pelanggan yang puas</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 text-blue-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">AS</div>
+                        <div>
+                            <h4 class="font-bold">Anita Sari</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Anak saya yang berusia 3 tahun sekarang bisa menggunakan toilet sendiri tanpa takut. Produk ini sangat membantu proses toilet training."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 text-green-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">BW</div>
+                        <div>
+                            <h4 class="font-bold">Budi Wibowo</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Kokoh dan stabil. Anak saya yang aktif bisa naik turun dengan aman. Desainnya juga bagus dan mudah dibersihkan."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 text-purple-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">DM</div>
+                        <div>
+                            <h4 class="font-bold">Dewi Mulyani</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Setelah 1 minggu menggunakan, anak saya sudah berani ke toilet sendiri. Tidak perlu lagi mengangkatnya ke toilet dewasa."</p>
+                </div>
+                
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-orange-100 text-orange-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">FP</div>
+                        <div>
+                            <h4 class="font-bold">Fajar Pratama</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Worth it banget harganya. Anak kedua saya juga bisa pakai. Sekarang toilet training jadi lebih mudah."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="py-12 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4">Bonus Spesial Untuk Pembelian Hari Ini!</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto">Dapatkan bonus menarik yang akan membantu proses toilet training anak Anda</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+                    <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-book text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">E-Book Panduan</h3>
+                    <p class="text-blue-100 text-center">Panduan lengkap toilet training untuk anak usia 1-5 tahun senilai Rp 75.000</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+                    <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-video text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Video Tutorial</h3>
+                    <p class="text-blue-100 text-center">Video cara menggunakan produk dengan benar dan tips toilet training efektif</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg backdrop-filter backdrop-blur-sm">
+                    <div class="bg-white text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-headset text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Konsultasi Gratis</h3>
+                    <p class="text-blue-100 text-center">Konsultasi via WhatsApp dengan ahli parenting selama 30 menit senilai Rp 100.000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Pertanyaan yang Sering Diajukan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Temukan jawaban atas pertanyaan Anda di sini</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-4 border-b pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-bold text-gray-800">
+                        <span>Berapa usia yang cocok untuk produk ini?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content mt-2 text-gray-600 hidden">
+                        Produk ini cocok untuk anak usia 1-10 tahun, atau dengan berat badan maksimal 50kg. Tangga membantu anak yang masih kecil untuk mencapai toilet dewasa dengan nyaman.
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-bold text-gray-800">
+                        <span>Apakah produk ini aman untuk anak?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content mt-2 text-gray-600 hidden">
+                        Sangat aman! Produk ini terbuat dari material PP berkualitas tinggi yang bebas BPA. Desainnya stabil dengan permukaan anti slip dan bisa menahan beban hingga 50kg.
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-bold text-gray-800">
+                        <span>Bagaimana cara membersihkannya?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content mt-2 text-gray-600 hidden">
+                        Anda bisa membersihkannya dengan lap basah atau sabun lembut. Materialnya tahan air dan mudah dibersihkan. Tidak perlu perawatan khusus.
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-bold text-gray-800">
+                        <span>Apakah produk ini bisa dilipat?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content mt-2 text-gray-600 hidden">
+                        Ya, produk ini bisa dilipat sebagian untuk menghemat space ketika tidak digunakan. Namun ketika dipasang, bentuknya akan kokoh dan stabil.
+                    </div>
+                </div>
+                
+                <div class="mb-4 border-b pb-4">
+                    <button class="faq-btn flex justify-between items-center w-full text-left font-bold text-gray-800">
+                        <span>Berapa lama pengiriman biasanya?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content mt-2 text-gray-600 hidden">
+                        Pengiriman biasanya memakan waktu 2-5 hari kerja tergantung lokasi pengiriman. Kami bekerja sama dengan kurir terpercaya untuk memastikan produk sampai dengan aman.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-12 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Stair Toilet Seat for Children</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Solusi toilet training yang aman dan nyaman untuk si kecil</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-gray-700 rounded-lg shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8">
+                        <img src="https://cdn.shopify.com/s/files/1/0908/1317/0034/files/550x550_2.jpg?v=1745427468" alt="Product Image" class="rounded-lg w-full">
+                        
+                        <div class="mt-6 flex justify-center">
+                            <div class="bg-gray-800 p-4 rounded-lg inline-block relative">
+                                <div class="discount-badge">
+                                    <span>50%</span>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-gray-300">Harga Normal</p>
+                                    <p class="text-xl line-through text-gray-400">Rp 388.500</p>
+                                    <p class="text-sm text-gray-300">Harga Promo</p>
+                                    <p class="text-3xl font-bold text-orange-400">Rp 259.000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-8 bg-gray-600">
+                        <h3 class="text-2xl font-bold mb-4">Isi Form Pemesanan</h3>
+                        
+                        <div class="mb-6 bg-yellow-100 text-yellow-800 p-3 rounded-lg flex items-start">
+                            <i class="fas fa-exclamation-circle mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-bold">PROMO TERBATAS!</p>
+                                <p class="text-sm">Stok tersisa: <span id="stock-count" class="font-bold">27</span> pcs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 bg-red-100 text-red-800 p-3 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold">Promo Berakhir Dalam:</span>
+                                <span id="countdown" class="font-mono font-bold">23:59:59</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="countdown-bar" class="bg-red-600 h-2.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        
+                        <form id="order-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-1 font-medium">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 rounded border border-gray-500 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block mb-1 font-medium">No. WhatsApp</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 rounded border border-gray-500 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                            </div>
+                            
+                            <div>
+                                <label for="address" class="block mb-1 font-medium">Alamat Lengkap</label>
+                                <textarea id="address" rows="3" class="w-full px-4 py-2 rounded border border-gray-500 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500" required></textarea>
+                            </div>
+                            
+                            <div>
+                                <label for="quantity" class="block mb-1 font-medium">Jumlah</label>
+                                <select id="quantity" class="w-full px-4 py-2 rounded border border-gray-500 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                    <option value="1">1 Pcs - Rp 259.000</option>
+                                    <option value="2">2 Pcs - Rp 518.000</option>
+                                    <option value="3">3 Pcs - Rp 777.000</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> PESAN SEKARANG
+                            </button>
+                        </form>
+                        
+                        <div class="mt-6 flex items-center text-sm text-gray-300">
+                            <i class="fas fa-lock mr-2"></i>
+                            <span>Data Anda aman dan tidak akan disalahgunakan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="https://cdn.shopify.com/s/files/1/0908/1317/0034/files/550x550.jpg?v=1745427468" alt="Logo" class="h-10 w-10 rounded-full object-cover">
+                        <h2 class="ml-3 text-xl font-bold">StairToilet<span class="text-orange-500">Kids</span></h2>
+                    </div>
+                    <p class="mt-2 text-gray-400 text-sm">Solusi toilet training aman untuk si kecil</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 StairToiletKids. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <button class="notification-close" onclick="closeNotification()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="notification-avatar" id="notif-avatar">RD</div>
+        <div>
+            <p class="font-bold text-sm" id="notif-name">Rina Dwi</p>
+            <p class="text-xs text-gray-600" id="notif-location">Baru saja memesan dari Jakarta</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ Accordion
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Gallery Modal
+        function openModal(img) {
+            const modal = document.getElementById('gallery-modal');
+            const modalImg = document.getElementById('modal-img');
+            
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+        
+        function closeModal() {
+            document.getElementById('gallery-modal').style.display = "none";
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('gallery-modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Dynamic Counters
+        function animateCounter(elementId, target, duration = 2000) {
+            const element = document.getElementById(elementId);
+            const start = parseInt(element.textContent.replace(/,/g, ''));
+            const increment = Math.floor((target - start) / (duration / 16));
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = current.toLocaleString();
+                
+                if (current >= target) {
+                    clearInterval(timer);
+                    element.textContent = target.toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Countdown Timer
+        function startCountdown() {
+            let hours = 23;
+            let minutes = 59;
+            let seconds = 59;
+            let totalSeconds = hours * 3600 + minutes * 60 + seconds;
+            
+            const countdownElement = document.getElementById('countdown');
+            const countdownBar = document.getElementById('countdown-bar');
+            
+            const timer = setInterval(() => {
+                totalSeconds--;
+                
+                hours = Math.floor(totalSeconds / 3600);
+                minutes = Math.floor((totalSeconds % 3600) / 60);
+                seconds = totalSeconds % 60;
+                
+                countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                const percentage = (totalSeconds / (24 * 3600)) * 100;
+                countdownBar.style.width = `${percentage}%`;
+                
+                if (totalSeconds <= 0) {
+                    clearInterval(timer);
+                    countdownElement.textContent = "00:00:00";
+                    countdownBar.style.width = "0%";
+                }
+            }, 1000);
+        }
+        
+        // Random Notification
+        function showRandomNotification() {
+            const names = ['Rina Dwi', 'Ahmad Fauzi', 'Dewi Lestari', 'Budi Santoso', 'Siti Rahma', 'Joko Widodo'];
+            const locations = ['Jakarta', 'Bandung', 'Surabaya', 'Medan', 'Makassar', 'Yogyakarta'];
+            
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+            const initials = randomName.split(' ').map(n => n[0]).join('');
+            
+            document.getElementById('notif-avatar').textContent = initials;
+            document.getElementById('notif-name').textContent = randomName;
+            document.getElementById('notif-location').textContent = `Baru saja memesan dari ${randomLocation}`;
+            
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                closeNotification();
+            }, 5000);
+        }
+        
+        function closeNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('show');
+            
+            // Show another notification after some time
+            setTimeout(() => {
+                showRandomNotification();
+            }, 15000);
+        }
+        
+        // Form Submission
+        const orderForm = document.getElementById('order-form');
+        
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const quantity = document.getElementById('quantity').value;
+            
+            // In a real implementation, you would send this data to your server
+            // For this example, we'll redirect to the order link with query parameters
+            const orderUrl = `https://vera.orderonline.id/stair-toilet-seat-for-children?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&address=${encodeURIComponent(address)}&quantity=${quantity}`;
+            
+            window.location.href = orderUrl;
+        });
+        
+        // Initialize when page loads
+        window.onload = function() {
+            // Animate counters
+            animateCounter('viewer-count', 1257);
+            animateCounter('stock-count', 27);
+            
+            // Start countdown
+            startCountdown();
+            
+            // Show first notification after 3 seconds
+            setTimeout(() => {
+                showRandomNotification();
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
